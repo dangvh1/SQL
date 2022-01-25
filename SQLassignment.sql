@@ -217,7 +217,7 @@ where faculty.id = student.faculty_id group by faculty.name having count(student
 -- 6. Cho biết khoa nào có đông nữ nhất
 select faculty.name, student.gender, count(gender) from faculty,student
 where faculty.id = student.faculty_id and gender = 'Nữ'
-group by faculty.name, gender having count(student.faculty_id)>= all(select count(gender) from student where gender ='Nữ' group by student.faculty_id);
+group by faculty.name, gender having count(student.faculty_id)> all(select count(gender) from student where gender ='Nữ' group by student.faculty_id);
 -- 7. Cho biết những sinh viên đạt điểm cao nhất trong từng môn
 select student.name , max(mark) from exam_management, student
 where  exam_management.student_id = student.id
